@@ -19,3 +19,12 @@ function renderSearchResults(){
   const template = Handlebars.compile(src);
   return template(result);
 }
+
+function showCommits(el) {
+    const repo = el.dataset.repo;
+    const uri = 'https://api.github.com/repos/' + repo +'/commits';
+    $.get(uri, function(data) {
+        console.log(data)
+        $('#details').html(renderCommits(data))
+    })
+}
