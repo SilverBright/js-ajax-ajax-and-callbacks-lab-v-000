@@ -13,3 +13,7 @@ function searchRepositories() {
 function displayError(error) {
     $('#errors').html("Oops! There's an error." + error);
 }
+
+function renderSearchResults(){
+  
+}
