@@ -29,3 +29,8 @@ function showCommits(el) {
     })
 }
 
+function renderCommits(commits) {
+    const src = $('#commits-template').html();
+    const template = Handlebars.compile(src);
+    return template(commits);
+}
