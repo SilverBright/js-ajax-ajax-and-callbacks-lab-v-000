@@ -8,4 +8,4 @@ function searchRepositories() {
         console.log(data.items)
         $('#results').html(renderSearchResults(data.items))
     }).fail(function(error) {displayError(error)})
-};
+}
