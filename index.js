@@ -28,3 +28,4 @@ function showCommits(el) {
         $('#details').html(renderCommits(data))
     })
 }
+
