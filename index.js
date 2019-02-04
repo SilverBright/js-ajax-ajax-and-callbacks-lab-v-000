@@ -15,5 +15,7 @@ function displayError(error) {
 }
 
 function renderSearchResults(){
-  
+  const src = $('#repository-template').html();
+  const template = Handlebars.compile(src);
+  return template(result);
 }
