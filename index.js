@@ -11,5 +11,5 @@ function searchRepositories() {
 }
 
 function displayError(error) {
-    $('#errors').html("There is an error." + error);
+    $('#errors').html("There's an error." + error);
 }
