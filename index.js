@@ -9,3 +9,7 @@ function searchRepositories() {
         $('#results').html(renderSearchResults(data.items))
     }).fail(function(error) {displayError(error)})
 }
+
+function displayError(error) {
+    $('#errors').html("There is an error." + error);
+}
