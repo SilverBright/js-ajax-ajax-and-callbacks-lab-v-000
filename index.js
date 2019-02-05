@@ -8,16 +8,16 @@ function searchRepositories() {
         console.log(data.items)
         $('#results').html(renderSearchResults(data.items))
     }).fail(function(error) {displayError(error)})
-}
+};
 
 function displayError(error) {
-    $('#errors').html("Oops! There's an error." + error);
+    $('#errors').html("There is an error." + error);
 }
 
-function renderSearchResults(){
-  const src = $('#repository-template').html();
-  const template = Handlebars.compile(src);
-  return template(result);
+function renderSearchResults(result) {
+    const src = $('#repository-template').html();
+    const template = Handlebars.compile(src);
+    return template(result);
 }
 
 function showCommits(el) {
