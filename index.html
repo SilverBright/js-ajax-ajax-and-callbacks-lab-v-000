@@ -37,7 +37,15 @@
       </div>
     </div>
     <script id="repository-template" type="text/x-handlebars-template">
-    
+        <ul>
+          {{#each this}}
+            <li>
+            <h2><a href={{html_url}}>{{name}}</a></h2>
+            <p>{{description}}</p>
+            <p><a href="#" onclick="showCommits(this);return false;" data-repo={{full_name}}>Get Commits</a></p>
+            </li>
+          {{/each}}
+        </ul>
     
     <script src="jquery-3.1.0.min.js"></script>
     <script src="index.js"></script>
