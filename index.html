@@ -49,15 +49,15 @@
     </script>
     <script id="commits-template" type="text/x-handlebars-template">
     <ul>
-    {{#each this}}
-      <li>
-        <p>{{sha}}</p>
-        <p>By - {{commit.author.name}}</p>
-        <p>{{author.login}}</p>
-        <img src="{{committer.avatar_url}}" height=32px width=32px>
-      </li>
-    {{/each}}
-    </ul>
+     {{#each this}}
+        <li>
+          <p>{{sha}}</p>
+          <p>By - {{commit.author.name}}</p>
+          <p>{{author.login}}</p>
+          <img src="{{committer.avatar_url}}" height=32px width=32px>
+        </li>
+        {{/each}}
+      </ul>
     </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
