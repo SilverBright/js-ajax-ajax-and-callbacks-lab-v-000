@@ -2,39 +2,40 @@ function handlebarsSetup() {
     Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
 }
 
-$(document).ready(function (){
+$(document).ready(function() {
+    handlebarsSetup()
 });
 
+function displayError() {
+    $('#errors').text("I'm sorry, there's been an error. Please try again.");
+}
+
+function displayResults(results) {
+    var template = Handlebars.compile(document.getElementById("result-template").innerHTML);
+    var result = template(results);
+    document.getElementById('results').innerHTML = result;
+}
+
 function searchRepositories() {
-    const searchTerms = $('#searchTerms').val();
-    const uri = 'https://api.github.com/search/repositories?q=' + searchTerms
-    $.get(uri, function(data) {
-        console.log(data.items)
-        $('#results').html(renderSearchResults(data.items))
-    }).fail(function(error) {displayError(error)})
+    terms = $('#searchTerms')[0].value
+    $.getJSON("https://api.github.com/search/repositories?q=" + terms, function(response) {
+        results = response.items;
+        displayResults(results);
+    }).fail(function(error) { displayError(error) });
 }
 
-function displayError(error) {
-    $('#errors').html("There is an error." + error);
-}
-
-function renderSearchResults(result) {
-    const src = $('#repository-template').html();
-    const template = Handlebars.compile(src);
-    return template(result);
+function displayCommits(results) {
+    var template = Handlebars.compile(document.getElementById("commits-template").innerHTML);
+    var result = template(results);
+    document.getElementById('details').innerHTML = result;
 }
 
 function showCommits(el) {
-    const repo = el.dataset.repo;
-    const uri = 'https://api.github.com/repos/' + repo +'/commits';
-    $.get(uri, function(data) {
-        console.log(data)
-        $('#details').html(renderCommits(data))
-    })
-}
+    const repo = el.dataset.repository;
+    const owner = el.dataset.owner;
+    commits_url = 'https://api.github.com/repos/' + owner + '/' + repo + '/commits'
 
-function renderCommits(commits) {
-    const src = $('#commits-template').html();
-    const template = Handlebars.compile(src);
-    return template(commits);
+    $.getJSON(commits_url, function(response) {
+        displayCommits(response);
+    }).fail(function(error) { displayError(error) });
 }
