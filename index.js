@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 
 function displayError() {
-    $('#errors').text("I'm sorry, there's been an error. Please try again.");
+    $('#errors').text("Oops!  There's an error.");
 }
 
 function displayResults(results) {
