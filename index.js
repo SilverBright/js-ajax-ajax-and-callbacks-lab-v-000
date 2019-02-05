@@ -1,3 +1,7 @@
+function handlebarsSetup() {
+    Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
+}
+
 $(document).ready(function (){
 });
 
